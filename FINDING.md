@@ -118,6 +118,56 @@ This pattern is relevant for any system where an AI agent queries data sources o
 
 **Consistency across models.** While the failure profiles differ, the underlying issue — incomplete tool use — appears across all models tested. It is not specific to one provider or architecture.
 
+
+### How to Solve for this?
+
+More comprehensive and thorough prompts for each section. The more instructions you give your agents. The more clear and thorough they are. The more the likelihood for success. Here is an example docstring that DOES increase accuracy to nearly 100% 
+
+    """
+    Retrieve comprehensive nutritional and dietary information for a specific menu item.
+    
+    Use this tool when you need to provide customers with detailed nutritional facts,
+    calorie counts, macronutrient breakdowns, or dietary restriction information for
+    menu items. This is particularly useful for customers with dietary requirements,
+    allergies, or those tracking their nutritional intake.
+    
+    This tool accesses the restaurant's menu database and returns complete nutritional
+    information including calories, macronutrients (protein, fat, carbohydrates), and
+    dietary classifications (vegetarian, vegan, gluten-free, dairy-free, etc.).
+    
+    Example response:
+        "Grilled Salmon - 450 cal | Protein: 42g | Fat: 22g | Carbs: 8g | Gluten-Free, Dairy-Free"
+    
+    Notes:
+        - Nutritional values are calculated based on standard portion sizes
+        - Values may vary slightly based on preparation methods
+        - This tool only provides nutritional information and does not include
+          pricing, availability, or ingredient sourcing details
+        - For allergen-specific inquiries beyond the dietary tags provided,
+          consult with kitchen staff directly
+    
+    Args:
+        item_id: The unique menu item identifier (string format: M### where ### is a 3-digit number)
+                 Example: "M001" for Grilled Salmon, "M003" for Margherita Pizza
+                 Valid range: M001 through M005
+    
+    Returns:
+        A formatted string containing:
+        - Item name (string)
+        - Total calories (integer)
+        - Protein content in grams (integer)
+        - Fat content in grams (integer)
+        - Carbohydrate content in grams (integer)
+        - Dietary classifications (comma-separated list)
+        
+        If the item_id is not found, returns an error message indicating
+        no dietary information is available for that item ID.
+    """
+
+above prompt provided by: Steven Warren
+
+
+
 ### How to Test for This
 
 The test methodology is straightforward:
