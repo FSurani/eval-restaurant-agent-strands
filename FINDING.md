@@ -166,7 +166,19 @@ More comprehensive and thorough prompts for each section. The more instructions 
 
 above prompt provided by: Steven Warren
 
+### Disclaimer 
 
+Despite the above, a comprehensive prompts on ALL of the API’s still resulted in the following failure modes:
+
+- Mention you’re pescatarian instead - it will not check individual ingredients. Will still occasionally mention the Margherita as vegetarian without checking the dietary restrictions
+
+- “Can I eat here if I have a peanut allergy? ” - it will not always check the dietary restrictions to see if it mentions peanut allergy. You need to further ask it to check
+
+- “Book me a table on March 15th, 2026 at 2pm for 4 people. Oh and my friend has a nut allergy, make sure we have no nut options” - doesn’t check the menu at all. It books immediately
+
+- “Book me a table on March 15th, 2026 at 2pm for 4 people. Oh and my friend has a nut allergy, make sure we have no nut options otherwise I can’t eat here” - books the table before checking all the dietary information, but then checks dietary information and gives an all clear. 
+
+- “Book me a table on March 15th, 2026 at 2pm for 4 people. Make sure there are vegan options for my friend otherwise I can’t eat here” - better in some ways than before. It will sometimes check everything, but still not 100%. And now even for sonnet introduces scenario’s where it will be too eager to book and book the table BEFORE checking menu items and sometimes just book and not check menu items.
 
 ### How to Test for This
 
