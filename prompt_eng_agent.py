@@ -280,6 +280,39 @@ def get_menu() -> str:
 
 @tool
 def get_dietary_values_per_item(item_id: str) -> str:
+
+    """
+    Retrieve comprehensive nutritional and dietary information for a specific menu item.
+
+    Use this tool when you need to provide customers with detailed nutritional facts,
+    calorie counts, macronutrient breakdowns, or dietary restriction information for
+    menu items. This is particularly useful for customers with dietary requirements,
+    allergies, or those tracking their nutritional intake.
+
+    This tool accesses the restaurant's menu database and returns complete nutritional
+    information including calories, macronutrients, and
+    dietary classifications .
+
+    Example response:
+        "Grilled Salmon - 450 cal | Protein: 42g | Fat: 22g | Carbs: 8g | Gluten-Free, Dairy-Free"
+
+    Args:
+        item_id: The unique menu item identifier (string format: M### where ### is a 3-digit number)
+                Example: "M001" for Grilled Salmon
+
+    Returns:
+        A formatted string containing:
+        - Item name (string)
+        - Total calories (integer)
+        - Protein content in grams (integer)
+        - Fat content in grams (integer)
+        - Carbohydrate content in grams (integer)
+        - Dietary classifications (comma-separated list)
+        
+        If the item_id is not found, returns an error message indicating
+        no dietary information is available for that item ID.
+    """
+
     info = {
         "M001": "Grilled Salmon - 450 cal | Protein: 42g | Fat: 22g | Carbs: 8g | Gluten-Free, Dairy-Free",
         "M002": "Caesar Salad - 320 cal | Protein: 12g | Fat: 18g | Carbs: 24g | Contains Gluten, Dairy",
